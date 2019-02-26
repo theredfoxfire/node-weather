@@ -1,9 +1,9 @@
-let request = require('request');
+const request = require('request');
 
-let apiKey = 'b6907d289e10d714a6e88b30761fae22';
+const apiKey = 'b6907d289e10d714a6e88b30761fae22';
 
-function fetchWeatherAPI(url) {
-  return request(url, function (err, response, body) {
+const fetchWeatherAPI = (url) => {
+  return request(url, (err, response, body) => {
     if(err){
       console.log('error:', err);
     } else {
@@ -13,10 +13,10 @@ function fetchWeatherAPI(url) {
   });
 }
 
-function getWeatherByLocZip(arrayOfLocationZip) {
+const getWeatherByLocZip = (arrayOfLocationZip) => {
   let weatherFetchList = [];
 
-  arrayOfLocationZip.forEach(function (val) {
+  arrayOfLocationZip.forEach((val) => {
     let city = val.location;
     let zip = val.zip;
     let urlByCity = `https://samples.openweathermap.org/data/2.5/forecast?q=`+city+`&appid=`+apiKey;
@@ -25,7 +25,7 @@ function getWeatherByLocZip(arrayOfLocationZip) {
     weatherFetchList.push(fetchWeatherAPI(urlByZip));
   })
 
-  Promise.all(weatherFetchList).then(function(values) {
+  Promise.all(weatherFetchList).then((values) => {
     console.log(values);
   });
 }
