@@ -17,10 +17,11 @@ const getWeatherByLocZip = arrayOfLocationZip => {
   let weatherFetchList = [];
 
   arrayOfLocationZip.forEach((val) => {
-    let city = val.location;
-    let zip = val.zip;
-    let urlByCity = `https://samples.openweathermap.org/data/2.5/forecast?q=`+city+`&appid=`+apiKey;
-    let urlByZip = `https://samples.openweathermap.org/data/2.5/forecast?zip=`+zip+`&appid=`+apiKey;
+    const city = val.location;
+    const zip = val.zip;
+    const urlByCity = `https://samples.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+    const urlByZip = `https://samples.openweathermap.org/data/2.5/forecast?zip=${zip}&appid=${apiKey}`;
+
     weatherFetchList.push(fetchWeatherAPI(urlByCity));
     weatherFetchList.push(fetchWeatherAPI(urlByZip));
   })
