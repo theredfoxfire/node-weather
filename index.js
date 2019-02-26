@@ -30,6 +30,12 @@ function getWeatherByLocZip(arrayOfLocationZip) {
   });
 }
 
-let paramData = [{location: 'portland', zip: '99524'}, {location: 'Denver', zip: '80239'}];
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-getWeatherByLocZip(paramData);
+readline.question(`Give me array of location & zip object ex: [{"location": "portland", "zip": "99524"}] : `, (paramData) => {
+  getWeatherByLocZip(JSON.parse(paramData));
+  readline.close();
+});
