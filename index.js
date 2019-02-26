@@ -2,8 +2,8 @@ const request = require('request');
 
 const apiKey = 'b6907d289e10d714a6e88b30761fae22';
 
-const fetchWeatherAPI = (url) => {
-  return request(url, (err, response, body) => {
+const fetchWeatherAPI = url => {
+  return request(url, function(err, response, body) {
     if(err){
       console.log('error:', err);
     } else {
@@ -13,7 +13,7 @@ const fetchWeatherAPI = (url) => {
   });
 }
 
-const getWeatherByLocZip = (arrayOfLocationZip) => {
+const getWeatherByLocZip = arrayOfLocationZip => {
   let weatherFetchList = [];
 
   arrayOfLocationZip.forEach((val) => {
